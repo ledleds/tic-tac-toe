@@ -10,15 +10,20 @@
   }
 
   Game.prototype.play = function(move) {
+    console.log(this.grid)
     this.checkField(move);
+    this.plotMove(move);
   };
 
   Game.prototype.checkField = function(move) {
-    if (this.grid[move] == 'X' || '0') {
+    console.log(this.grid[move])
+    if (this.grid[move] == 'X' || this.grid[move] == '0') {
       throw new Error('Space already taken!');
-    } else {
-      // plotMove(move);
     }
+  };
+
+  Game.prototype.plotMove = function (move) {
+    this.grid[move] = 'X';
   };
 
   exports.Game = Game;
