@@ -52,26 +52,43 @@ describe("Game", function() {
         expect(game.plotMove).toBeDefined();
       });
 
-      // it("moves number to players array if field is free", function() {
-      //   game.play(0);
-      //   expect(game.player1).toEqual([1]);
-      // }); //make a new mehtod which is called by plotMove
-
       it("plots an X if field is free and current player is p1", function() {
         game.play(0);
         expect(game.grid).toEqual(['X', 2, 3, 4, 5, 6, 7, 8, 9]);
       });
 
-      describe("switchTurn", function() {
-        it("has a switchTurn method", function() {
-          expect(game._switchTurn).toBeDefined();
+      it("plots an 0 if field is free and current player is p2", function() {
+        game.play(0);
+        game.play(3);
+        expect(game.grid).toEqual(['X', 2, 3, '0', 5, 6, 7, 8, 9]);
+      });
+
+      describe("addToPlayerArray", function() {
+        it("has a addToPlayerArray method", function() {
+          expect(game.addToPlayerArray).toBeDefined();
         });
 
-        it("changes currentPlayer after their turn", function() {
+        it("moves number to players array if field is free", function() {
           game.play(0);
-          expect(game.currentPlayer).toEqual(game.player2);
+          expect(game.player1).toEqual([1]);
+          game.play(2);
+          expect(game.player2).toEqual([3]);
+          game.play(8);
+          expect(game.player1).toEqual([1, 9]);
         });
       });
+    });
+
+    describe("switchTurn", function() {
+      it("has a switchTurn method", function() {
+        expect(game._switchTurn).toBeDefined();
+      });
+
+      it("changes currentPlayer after their turn", function() {
+        game.play(0);
+        expect(game.currentPlayer).toEqual(game.player2);
+      });
+
     });
   });
 });

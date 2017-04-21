@@ -24,15 +24,16 @@
   };
 
   Game.prototype.plotMove = function(move) {
+    this.addToPlayerArray(move);
     if (this.currentPlayer == this.player1) {
       this.grid[move] = 'X';
     } else {
       this.grid[move] = '0';
     }
-    // this.currentPlayer
-    // this.currentPlayer = this.currentPlayer.slice(this.grid[move])
-    // console.log(this.player1)
-    // console.log(this.grid)
+  };
+
+  Game.prototype.addToPlayerArray = function(move) {
+    this.currentPlayer.push(this.grid[move]);
   };
 
   Game.prototype._switchTurn = function() {
