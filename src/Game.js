@@ -17,7 +17,7 @@
     this._switchTurn();
   };
 
-  Game.prototype.checkField = function(move) { //check to see if number exists in grid array
+  Game.prototype.checkField = function(move) {
     if (this.grid[move] == 'X' || this.grid[move] == '0') {
       throw new Error('Space already taken!');
     }
